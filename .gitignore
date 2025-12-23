@@ -1,0 +1,40 @@
+# Build results
+/bin/
+/obj/
+/out/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored if you use package restore
+packages/
+
+# Logs and temporary files
+*.log
+*.tlog
+*.tmp
+*.cache
+*.bak
+
+# Test results
+TestResult*/
+*.trx
+*.coverage
+*.coveragexml
+
+# Resharper / Rider
+_ReSharper*/
+*.DotSettings.user
+
+# Other IDE/project files
+*.swp
+*.DS_Store

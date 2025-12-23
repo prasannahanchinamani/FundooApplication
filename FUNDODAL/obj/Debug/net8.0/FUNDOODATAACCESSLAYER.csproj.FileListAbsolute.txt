@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\bin\Debug\net8.0\FUNDOODATAACCESSLAYER.deps.json
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\bin\Debug\net8.0\FUNDOODATAACCESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\bin\Debug\net8.0\FUNDOODATAACCESSLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.AssemblyInfo.cs
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.sourcelink.json
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\refint\FUNDOODATAACCESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\FUNDOODATAACCESSLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDODAL\obj\Debug\net8.0\ref\FUNDOODATAACCESSLAYER.dll

@@ -1,0 +1,6 @@
+@FUNDOApplication.API_HostAddress = http://localhost:5195
+
+GET {{FUNDOApplication.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

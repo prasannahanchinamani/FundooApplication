@@ -1,0 +1,16 @@
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\BUSINESSLAYER.deps.json
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\BUSINESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\BUSINESSLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\MODELLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\MODELLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.AssemblyInfo.cs
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.sourcelink.json
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESS.48382AEA.Up2Date
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\refint\BUSINESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\BUSINESSLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\ref\BUSINESSLAYER.dll

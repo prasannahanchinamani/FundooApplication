@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\FUNDOOBUSINESSLAYER.deps.json
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\FUNDOOBUSINESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\bin\Debug\net8.0\FUNDOOBUSINESSLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.AssemblyInfo.cs
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.sourcelink.json
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\refint\FUNDOOBUSINESSLAYER.dll
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\FUNDOOBUSINESSLAYER.pdb
+C:\Users\User\Desktop\C#ProJects\FUNDO\FUNDOBLL\obj\Debug\net8.0\ref\FUNDOOBUSINESSLAYER.dll
