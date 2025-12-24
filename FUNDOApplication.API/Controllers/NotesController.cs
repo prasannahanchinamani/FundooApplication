@@ -39,7 +39,7 @@ namespace FunDooApplication.Controllers
         public IActionResult UpdateNote(int noteId, NotesRequestDTO dto)
             => Ok(services.UpdateNote(noteId, dto, GetUserId()));
 
-        // 🗑️ Move to Trash
+        //  Move to Trash
         [HttpDelete("{noteId}")]
         public IActionResult MoveToTrash(int noteId)
         {
@@ -47,7 +47,7 @@ namespace FunDooApplication.Controllers
             return Ok("Note moved to trash");
         }
 
-        // 📄 Get Trashed Notes
+        //  Get Trashed Notes
         [HttpGet("trash")]
         public IActionResult GetTrashedNotes()
             => Ok(services.GetAllTrashedNotes(GetUserId()));

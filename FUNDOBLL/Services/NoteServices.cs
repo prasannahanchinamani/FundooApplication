@@ -1,20 +1,24 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.Interfaces;
 using DataAccessLayer.Interfaces;
+using Microsoft.Extensions.Caching.Distributed;
 using ModelLayer.DTO;
 using ModelLayer.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 public class NotesService : INoteServices
 {
     private readonly INotesRepository repo;
     private readonly IMapper mapper;
+    private readonly IDistributedCache cache;
 
-    public NotesService(INotesRepository repo, IMapper mapper)
+    public NotesService(INotesRepository repo, IMapper mapper, IDistributedCache cache)
     {
         this.repo = repo;
         this.mapper = mapper;
+        this.cache = cache;
     }
 
     public NotesResponseDTO CreateNotes(NotesRequestDTO dto, int userId)
@@ -26,7 +30,30 @@ public class NotesService : INoteServices
 
     public List<NotesResponseDTO> GetAllNotes(int userId)
     {
-        return mapper.Map<List<NotesResponseDTO>>(repo.GetAllNotesByUser(userId));
+        //create ck key
+        string cacheKey = $"note{userId}";
+        //cache hit
+        var cachedData=cache.GetString(cacheKey);
+        
+        if (cachedData != null)
+        {
+            //Console.WriteLine(JsonSerializer.Deserialize<List<NotesResponseDTO>>(cachedData));
+            return JsonSerializer.Deserialize<List<NotesResponseDTO>>(cachedData);
+        }
+        //cache miss 
+        //var notesFromDb=repo.GetAllNotesByUser(userId);
+         var notesDto=mapper.Map<List<NotesResponseDTO>>(repo.GetAllNotesByUser(userId));
+         
+        var jsonData=JsonSerializer.Serialize(notesDto);
+        cache.SetString(
+            cacheKey,
+              jsonData,
+      new DistributedCacheEntryOptions
+      {
+          //Deletes the cache entry exactly 10 minutes after it is created, no matter how many times it is accessed
+          AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
+      });
+        return notesDto;
     }
 
     public NotesResponseDTO UpdateNote(int noteId, NotesRequestDTO dto, int userId)
@@ -36,6 +63,7 @@ public class NotesService : INoteServices
 
         mapper.Map(dto, note);
         var updated = repo.UpdateNote(note, userId);
+        cache.Remove($"note{userId}");
         return mapper.Map<NotesResponseDTO>(updated);
     }
 

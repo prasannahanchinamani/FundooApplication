@@ -312,3 +312,6 @@ C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\obj\Debug\net8.0\refi
 C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\obj\Debug\net8.0\FunDooApplication.pdb
 C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\obj\Debug\net8.0\FunDooApplication.genruntimeconfig.cache
 C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\obj\Debug\net8.0\ref\FunDooApplication.dll
+C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\User\Desktop\FundooApp\FUNDO\FUNDOApplication.API\bin\Debug\net8.0\StackExchange.Redis.dll

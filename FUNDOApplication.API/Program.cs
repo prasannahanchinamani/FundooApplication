@@ -6,6 +6,7 @@ using DataAccessLayer.Repositories;
 using FunDooApplication.MiddleWare;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ModelLayer.AutoMapper;
@@ -52,7 +53,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// 🔐 JWT Authentication
+//  JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -78,6 +79,13 @@ builder.Services.AddDbContext<FunDooDBContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["Redis:ConnectionString"];
+    options.InstanceName = builder.Configuration["Redis:InstanceName"];
+});
+
 
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
