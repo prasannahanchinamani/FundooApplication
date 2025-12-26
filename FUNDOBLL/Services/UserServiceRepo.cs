@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.DTO;
 using DataAccessLayer.Interfaces;
-using ModelLayer.Enities;
+using ModelLayer.Entities;
 using Microsoft.Identity.Client;
 using BCrypt.Net;
 using BusinessLogicLayer.Exceptions;

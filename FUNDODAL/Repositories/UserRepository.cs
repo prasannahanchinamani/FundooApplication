@@ -1,6 +1,6 @@
 ﻿using DataAccessLayer.CONTEXT;
 using DataAccessLayer.Interfaces;
-using ModelLayer.Enities;
+using ModelLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

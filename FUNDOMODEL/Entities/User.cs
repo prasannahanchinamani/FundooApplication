@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer.Enities
+namespace ModelLayer.Entities
 {
     public class User
     {

@@ -1,5 +1,95 @@
 [
   {
+    "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "CreateLabel",
+    "RelativePath": "api/labels",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ModelLayer.DTO.LabelRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "GetLabels",
+    "RelativePath": "api/labels",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "DeleteLabel",
+    "RelativePath": "api/labels/{labelId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "AddLabelToNote",
+    "RelativePath": "api/labels/notes/{noteId}/labels/{labelId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "RemoveLabelFromNote",
+    "RelativePath": "api/labels/notes/{noteId}/labels/{labelId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FunDooApplication.Controllers.NotesController",
     "Method": "CreateNote",
     "RelativePath": "api/notes",

@@ -94,8 +94,17 @@ builder.Services.AddScoped<INotesRepository, NotesRepository>();
 builder.Services.AddScoped<INoteServices, NotesService>();
 builder.Services.AddScoped<IEmailService, SmtpEmailService>();
 
+builder.Services.AddScoped<ILabelRepository, LabelRepository>();
+builder.Services.AddScoped<IlabelService, LabelService>();
+
+
+
+
 
 builder.Services.AddAutoMapper(typeof(NotesProfile));
+//builder.Services.AddAutoMapper(typeof(LabelMapper));
+builder.Services.AddAutoMapper(typeof(ModelLayer.AutoMapper.LabelMapper));
+
 
 
 

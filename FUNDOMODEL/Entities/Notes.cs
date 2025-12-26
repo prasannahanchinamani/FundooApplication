@@ -13,7 +13,7 @@ namespace ModelLayer.Entities
       
 
         [Key]
-            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+          [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             public int NotesId { get; set; }
 
             public string Title { get; set; }

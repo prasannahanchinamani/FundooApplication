@@ -52,7 +52,7 @@ namespace FunDooApplication.Controllers
         public IActionResult GetTrashedNotes()
             => Ok(services.GetAllTrashedNotes(GetUserId()));
 
-        // ♻️ Restore
+        //  Restore
         [HttpPatch("{noteId}/restore")]
         public IActionResult Restore(int noteId)
         {
@@ -60,7 +60,7 @@ namespace FunDooApplication.Controllers
             return Ok("Note restored");
         }
 
-        // ❌ Permanent Delete
+        //  Permanent Delete
         [HttpDelete("{noteId}/permanent")]
         public IActionResult PermanentDelete(int noteId)
         {

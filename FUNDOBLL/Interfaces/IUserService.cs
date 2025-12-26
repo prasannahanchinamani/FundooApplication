@@ -1,5 +1,5 @@
 ﻿
-using ModelLayer.Enities;
+using ModelLayer.Entities;
 
 using System;
 using System.Collections.Generic;
