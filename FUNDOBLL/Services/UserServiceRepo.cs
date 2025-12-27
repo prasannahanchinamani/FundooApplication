@@ -75,12 +75,14 @@ namespace BusinessLogicLayer.Services
 
         public RegisterUserResponseDTO RegisteredUser(RegisterUserRequestDTO requestDto)
         {
-
+          
             var existingUser = userRepository.GetUserByEmail(requestDto.Email);
             if (existingUser != null)
             {
-                throw new EmailNotFoundException("User is Already Register");
+                throw new EmailNotFoundException("User is Already Registered");
             }
+
+           
             User user = new User
             {
                 FirstName = requestDto.FirstName,
@@ -88,27 +90,33 @@ namespace BusinessLogicLayer.Services
                 Email = requestDto.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(requestDto.Password),
                 CreatedAt = DateTime.UtcNow,
-                ChangedAt = DateTime.UtcNow,
+                ChangedAt = DateTime.UtcNow
             };
+
+          
             userRepository.AddUser(user);
-            emailService.Send(
-                       user.Email,
-                   "Registration Successful ",
-                    $"Hello {user.FirstName} , " +
-                    $"your registration was successful." +
-                    $"Thank You Use This App"
-);
 
+           
+            var publisher = new RabbitMqPublisher();
+            publisher.PublishEmail(new EmailMessageDTO
+            {
+                To = user.Email,
+                Subject = "Registration Successful",
+                Body =
+                    $"Hello {user.FirstName}, " +
+                    $"your registration was successful. " +
+                    $"Thank you for using this app."
+            });
 
-
+           
             return new RegisterUserResponseDTO
             {
                 UserId = user.UserId,
-                FirstName = requestDto.FirstName,
-                LastName = requestDto.LastName,
-                Email = requestDto.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
             };
-
         }
+
     }
 }

@@ -96,6 +96,9 @@ builder.Services.AddScoped<IEmailService, SmtpEmailService>();
 
 builder.Services.AddScoped<ILabelRepository, LabelRepository>();
 builder.Services.AddScoped<IlabelService, LabelService>();
+builder.Services.AddScoped<ICollaboratorRepository, CollaboratorRepository>();
+builder.Services.AddScoped<ICollaboratorService, CollaboratorService>();
+
 
 
 
@@ -104,6 +107,8 @@ builder.Services.AddScoped<IlabelService, LabelService>();
 builder.Services.AddAutoMapper(typeof(NotesProfile));
 //builder.Services.AddAutoMapper(typeof(LabelMapper));
 builder.Services.AddAutoMapper(typeof(ModelLayer.AutoMapper.LabelMapper));
+builder.Services.AddAutoMapper(typeof(CollaboratorMapper));
+
 
 
 

@@ -50,6 +50,32 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Labels", (string)null);
                 });
 
+            modelBuilder.Entity("ModelLayer.Entities.NoteCollaborator", b =>
+                {
+                    b.Property<int>("CollaboratorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollaboratorId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("NoteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CollaboratorId");
+
+                    b.HasIndex("NoteId", "Email")
+                        .IsUnique();
+
+                    b.ToTable("NoteCollaborators");
+                });
+
             modelBuilder.Entity("ModelLayer.Entities.NoteLabel", b =>
                 {
                     b.Property<int>("NotesId")
@@ -152,6 +178,15 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("ModelLayer.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.NoteCollaborator", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Notes", null)
+                        .WithMany()
+                        .HasForeignKey("NoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

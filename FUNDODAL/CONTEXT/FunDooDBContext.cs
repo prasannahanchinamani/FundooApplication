@@ -16,6 +16,7 @@ namespace DataAccessLayer.CONTEXT
         public DbSet<Notes> Notes { get; set; }
         public DbSet<Label> Labels { get; set; }
         public DbSet<NoteLabel> NoteLabels { get; set; }
+        public DbSet<NoteCollaborator> NoteCollaborators { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,12 +48,22 @@ namespace DataAccessLayer.CONTEXT
                 .HasOne<Notes>()
                 .WithMany()
                 .HasForeignKey(nl => nl.NotesId)
-                .OnDelete(DeleteBehavior.Restrict);   // REQUIRED
+                .OnDelete(DeleteBehavior.Restrict);   
 
             modelBuilder.Entity<NoteLabel>()
                 .HasOne<Label>()
                 .WithMany()
-                .HasForeignKey(nl => nl.LabelId);      // Cascade by default
+                .HasForeignKey(nl => nl.LabelId);      
+            modelBuilder.Entity<NoteCollaborator>()
+                .HasIndex(c => new { c.NoteId, c.Email })
+                .IsUnique();
+
+         
+            modelBuilder.Entity<NoteCollaborator>()
+                .HasOne<Notes>()
+                .WithMany()
+                .HasForeignKey(c => c.NoteId)
+                .OnDelete(DeleteBehavior.Cascade);//cascading when parent datas deleted child data also delete 
 
         }
     }

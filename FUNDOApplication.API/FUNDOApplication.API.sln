@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "..\FUNDO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "..\FUNDOBLL\BusinessLogicLayer.csproj", "{81A52108-C78B-45CD-9323-AE1B125EDAFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailWorkerRabbitMq", "..\EmailWorkerRabbitMq\EmailWorkerRabbitMq.csproj", "{420ACEAF-5B07-4EBF-9D31-BE8518ED92CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{81A52108-C78B-45CD-9323-AE1B125EDAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81A52108-C78B-45CD-9323-AE1B125EDAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81A52108-C78B-45CD-9323-AE1B125EDAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420ACEAF-5B07-4EBF-9D31-BE8518ED92CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420ACEAF-5B07-4EBF-9D31-BE8518ED92CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420ACEAF-5B07-4EBF-9D31-BE8518ED92CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420ACEAF-5B07-4EBF-9D31-BE8518ED92CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

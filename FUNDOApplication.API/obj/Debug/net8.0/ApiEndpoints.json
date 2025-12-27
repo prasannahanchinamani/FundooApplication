@@ -1,5 +1,47 @@
 [
   {
+    "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
+    "Method": "Add",
+    "RelativePath": "api/Collaborator/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
+    "Method": "Remove",
+    "RelativePath": "api/Collaborator/remove",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FundooApp.Controllers.LabelController",
     "Method": "CreateLabel",
     "RelativePath": "api/labels",
