@@ -1,8 +1,8 @@
 [
   {
     "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
-    "Method": "Add",
-    "RelativePath": "api/Collaborator/add",
+    "Method": "AddCollaborator",
+    "RelativePath": "api/collaborators",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -22,23 +22,65 @@
   },
   {
     "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
-    "Method": "Remove",
-    "RelativePath": "api/Collaborator/remove",
+    "Method": "RemoveCollaboratorById",
+    "RelativePath": "api/collaborators/{collaboratorId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
+        "Name": "collaboratorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
+    "Method": "GetCollaboratorsByNote",
+    "RelativePath": "api/collaborators/{noteId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "noteId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
+    "Method": "RemoveCollaboratorByEmail",
+    "RelativePath": "api/collaborators/{noteId}/{email}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooApplication.Controllers.CollaboratorController",
+    "Method": "GetSharedNotes",
+    "RelativePath": "api/collaborators/shared-notes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -64,11 +106,26 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "UpdateLabelName",
+    "RelativePath": "api/labels/{labelId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
     "Parameters": [
       {
-        "Name": "search",
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "name",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -91,17 +148,12 @@
   },
   {
     "ContainingType": "FundooApp.Controllers.LabelController",
-    "Method": "AddLabelToNote",
-    "RelativePath": "api/labels/notes/{noteId}/labels/{labelId}",
-    "HttpMethod": "POST",
+    "Method": "GetNotesByLabel",
+    "RelativePath": "api/labels/{labelId}/notes",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "noteId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "labelId",
         "Type": "System.Int32",
@@ -112,19 +164,40 @@
   },
   {
     "ContainingType": "FundooApp.Controllers.LabelController",
+    "Method": "AddLabelToNote",
+    "RelativePath": "api/labels/{labelId}/notes/{noteId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FundooApp.Controllers.LabelController",
     "Method": "RemoveLabelFromNote",
-    "RelativePath": "api/labels/notes/{noteId}/labels/{labelId}",
+    "RelativePath": "api/labels/{labelId}/notes/{noteId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "noteId",
+        "Name": "labelId",
         "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "labelId",
+        "Name": "noteId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -349,12 +422,18 @@
   },
   {
     "ContainingType": "FunDooApplication.Controllers.UserController",
-    "Method": "GetAll",
-    "RelativePath": "api/User",
-    "HttpMethod": "GET",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/User/forgot-password",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -387,6 +466,37 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooApplication.Controllers.UserController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/User/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooApplication.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

@@ -1,11 +1,7 @@
-﻿using BusinessLogicLayer.Interfaces;
+﻿using BusinessLogicLayer.Exceptions.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using ModelLayer.DTO;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace FunDooApplication.Controllers
 {
@@ -14,17 +10,16 @@ namespace FunDooApplication.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService userService;
-        private readonly IConfiguration configuration;
 
-        public UserController(IUserService userService, IConfiguration configuration)
+        public UserController(IUserService userService)
         {
             this.userService = userService;
-            this.configuration = configuration;
         }
+
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public IActionResult Register(RegisterUserRequestDTO dto)
+        public IActionResult Register([FromBody]RegisterUserRequestDTO dto)
         {
             var result = userService.RegisteredUser(dto);
 
@@ -38,55 +33,48 @@ namespace FunDooApplication.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login(LoginRequestDTO dto)
+        public IActionResult Login([FromBody]LoginRequestDTO dto)
         {
             var user = userService.LogedInUser(dto);
 
-            if (user == null || user.UserId <= 0)
-            {
-                return Unauthorized(new { Message = "Invalid email or password" });
-            }
 
-         
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.FirstName)
-            };
-
-        
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(configuration["Jwt:Key"])
-            );
-
-          
-            var token = new JwtSecurityToken(
-                issuer: configuration["Jwt:Issuer"],
-                audience: configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(30),
-                signingCredentials:
-                    new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
-            );
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            var token = userService.GenerateLoginJwt(user);
 
             return Ok(new
             {
                 Message = "Login successful",
-                Token = tokenString,
+                Token = token,
                 UserId = user.UserId,
                 Email = user.Email
             });
         }
 
-        [Authorize]
-        [HttpGet]
-        public IActionResult GetAll()
+
+        //[AllowAnonymous]
+        [AllowAnonymous]
+        [HttpPost("forgot-password")]
+        public IActionResult ForgotPassword([FromQuery] string email)
         {
-            var users = userService.GetAllUser();
-            return Ok(users);
+            userService.ForgotPassword(email);
+            return Ok($"reset token sent to {email}");
+        }
+
+
+
+        [AllowAnonymous]
+        [HttpPost("reset-password")]
+        public IActionResult ResetPassword(string token, string newPassword)
+        {
+            userService.ResetPassword(token, newPassword);
+            return Ok("Password reset successful");
+        }
+
+       
+        [Authorize]
+        [HttpGet("users")]
+        public IActionResult GetAllUsers()
+        {
+            return Ok(userService.GetAllUser());
         }
     }
 }

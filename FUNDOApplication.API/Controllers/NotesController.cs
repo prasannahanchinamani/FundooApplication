@@ -1,4 +1,4 @@
-﻿using BusinessLogicLayer.Interfaces;
+﻿using BusinessLogicLayer.Exceptions.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.DTO;
@@ -33,13 +33,12 @@ namespace FunDooApplication.Controllers
 
         [HttpGet("{noteId}")]
         public IActionResult GetNoteById(int noteId)
-            => Ok(services.UpdateNote(noteId, null, GetUserId()));
+            => Ok(services.GetNoteById(noteId, GetUserId()));
 
         [HttpPut("{noteId}")]
         public IActionResult UpdateNote(int noteId, NotesRequestDTO dto)
             => Ok(services.UpdateNote(noteId, dto, GetUserId()));
 
-        //  Move to Trash
         [HttpDelete("{noteId}")]
         public IActionResult MoveToTrash(int noteId)
         {
@@ -47,12 +46,10 @@ namespace FunDooApplication.Controllers
             return Ok("Note moved to trash");
         }
 
-        //  Get Trashed Notes
         [HttpGet("trash")]
         public IActionResult GetTrashedNotes()
             => Ok(services.GetAllTrashedNotes(GetUserId()));
 
-        //  Restore
         [HttpPatch("{noteId}/restore")]
         public IActionResult Restore(int noteId)
         {
@@ -60,7 +57,6 @@ namespace FunDooApplication.Controllers
             return Ok("Note restored");
         }
 
-        //  Permanent Delete
         [HttpDelete("{noteId}/permanent")]
         public IActionResult PermanentDelete(int noteId)
         {

@@ -1,13 +1,12 @@
-﻿using BusinessLogicLayer.Interfaces;
+﻿using BusinessLogicLayer.Exceptions.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace FunDooApplication.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/collaborators")]
     [Authorize]
     public class CollaboratorController : ControllerBase
     {
@@ -17,30 +16,46 @@ namespace FunDooApplication.Controllers
         {
             this.service = service;
         }
-        [HttpPost("add")]
-        public IActionResult Add(string email, int noteId)
+
+        private int GetUserId()
         {
-            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            return int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        }
 
-            var result = service.AddCollaborator(email, noteId, userId);
-
-            if (result == null)
-                return BadRequest("Collaborator already exists");
-
+        [HttpPost]
+        public IActionResult AddCollaborator([FromQuery] string email, [FromQuery] int noteId)
+        {
+            var result = service.AddCollaborator(email, noteId, GetUserId());
+            if (result == null) return BadRequest("Collaborator already exists");
             return Ok(result);
         }
-        [HttpDelete("remove")]
-        public IActionResult Remove(string email, int noteId)
+
+        [HttpGet("{noteId}")]
+        public IActionResult GetCollaboratorsByNote(int noteId)
         {
-            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            return Ok(service.GetCollaboratorsByNoteId(noteId));
+        }
 
-            var success = service.RemoveCollaborator(email, noteId, userId);
+        [HttpDelete("{collaboratorId:int}")]
+        public IActionResult RemoveCollaboratorById(int collaboratorId)
+        {
+            var result = service.RemoveCollaboratorById(collaboratorId);
+            if (result == null) return NotFound("Collaborator not found");
+            return Ok(result);
+        }
 
-            if (!success)
-                return NotFound("Collaborator not found");
-
+        [HttpDelete("{noteId}/{email}")]
+        public IActionResult RemoveCollaboratorByEmail(int noteId, string email)
+        {
+            var success = service.RemoveCollaborator(email, noteId, GetUserId());
+            if (!success) return NotFound("Collaborator not found");
             return Ok("Collaborator removed successfully");
         }
 
+        [HttpGet("shared-notes")]
+        public IActionResult GetSharedNotes()
+        {
+            return Ok(service.GetSharedNotes(GetUserId()));
+        }
     }
 }

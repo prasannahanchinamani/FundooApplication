@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Collaborator/add": {
+    "/api/collaborators": {
       "post": {
         "tags": [
           "Collaborator"
@@ -34,27 +34,87 @@
         }
       }
     },
-    "/api/Collaborator/remove": {
+    "/api/collaborators/{noteId}": {
+      "get": {
+        "tags": [
+          "Collaborator"
+        ],
+        "parameters": [
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/collaborators/{collaboratorId}": {
       "delete": {
         "tags": [
           "Collaborator"
         ],
         "parameters": [
           {
-            "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noteId",
-            "in": "query",
+            "name": "collaboratorId",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/collaborators/{noteId}/{email}": {
+      "delete": {
+        "tags": [
+          "Collaborator"
+        ],
+        "parameters": [
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/collaborators/shared-notes": {
+      "get": {
+        "tags": [
+          "Collaborator"
         ],
         "responses": {
           "200": {
@@ -97,15 +157,6 @@
         "tags": [
           "Label"
         ],
-        "parameters": [
-          {
-            "name": "search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -114,6 +165,46 @@
       }
     },
     "/api/labels/{labelId}": {
+      "put": {
+        "tags": [
+          "Label"
+        ],
+        "parameters": [
+          {
+            "name": "labelId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Label"
@@ -136,14 +227,14 @@
         }
       }
     },
-    "/api/labels/notes/{noteId}/labels/{labelId}": {
+    "/api/labels/{labelId}/notes/{noteId}": {
       "post": {
         "tags": [
           "Label"
         ],
         "parameters": [
           {
-            "name": "noteId",
+            "name": "labelId",
             "in": "path",
             "required": true,
             "schema": {
@@ -152,7 +243,7 @@
             }
           },
           {
-            "name": "labelId",
+            "name": "noteId",
             "in": "path",
             "required": true,
             "schema": {
@@ -173,7 +264,7 @@
         ],
         "parameters": [
           {
-            "name": "noteId",
+            "name": "labelId",
             "in": "path",
             "required": true,
             "schema": {
@@ -181,6 +272,29 @@
               "format": "int32"
             }
           },
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/labels/{labelId}/notes": {
+      "get": {
+        "tags": [
+          "Label"
+        ],
+        "parameters": [
           {
             "name": "labelId",
             "in": "path",
@@ -577,7 +691,56 @@
         }
       }
     },
-    "/api/User": {
+    "/api/User/forgot-password": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/reset-password": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newPassword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/users": {
       "get": {
         "tags": [
           "User"
