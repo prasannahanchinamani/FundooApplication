@@ -10,10 +10,14 @@ namespace FunDooApplication.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService userService;
+        private readonly ILogger<UserController> logger;   
 
-        public UserController(IUserService userService)
+        public UserController(
+            IUserService userService,
+            ILogger<UserController> logger)               
         {
             this.userService = userService;
+            this.logger = logger;                         
         }
 
 
@@ -21,6 +25,7 @@ namespace FunDooApplication.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody]RegisterUserRequestDTO dto)
         {
+            logger.LogInformation("User Register API called");
             var result = userService.RegisteredUser(dto);
 
             return Ok(new
@@ -35,6 +40,7 @@ namespace FunDooApplication.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody]LoginRequestDTO dto)
         {
+            logger.LogInformation("User Login API called");
             var user = userService.LogedInUser(dto);
 
 
@@ -55,6 +61,7 @@ namespace FunDooApplication.Controllers
         [HttpPost("forgot-password")]
         public IActionResult ForgotPassword([FromQuery] string email)
         {
+            logger.LogInformation("Forgot Password API called");
             userService.ForgotPassword(email);
             return Ok($"reset token sent to {email}");
         }
@@ -65,6 +72,7 @@ namespace FunDooApplication.Controllers
         [HttpPost("reset-password")]
         public IActionResult ResetPassword(string token, string newPassword)
         {
+            logger.LogInformation("Reset Password API called");
             userService.ResetPassword(token, newPassword);
             return Ok("Password reset successful");
         }
@@ -74,6 +82,7 @@ namespace FunDooApplication.Controllers
         [HttpGet("users")]
         public IActionResult GetAllUsers()
         {
+            logger.LogInformation("Get All Users API called");
             return Ok(userService.GetAllUser());
         }
     }
