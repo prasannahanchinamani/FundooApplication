@@ -629,6 +629,18 @@
         }
       }
     },
+    "/api/reminder/send": {
+      "post": {
+        "tags": [
+          "Reminder"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User/register": {
       "post": {
         "tags": [

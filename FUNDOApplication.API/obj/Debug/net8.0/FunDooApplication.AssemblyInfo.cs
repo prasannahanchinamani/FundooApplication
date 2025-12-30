@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FunDooApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+825b494a080c43f2a5ef27a750c1b1c98112bab9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9921d704b016cffff0c9e9c3e47b254dad85395")]
 [assembly: System.Reflection.AssemblyProductAttribute("FunDooApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FunDooApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

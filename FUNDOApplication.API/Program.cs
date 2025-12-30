@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Exceptions.Interfaces;
+using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.Services;
 using DataAccessLayer.CONTEXT;
 using DataAccessLayer.Interfaces;
@@ -11,8 +12,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ModelLayer.AutoMapper;
 using Serilog;
-using System.Text;
 using Serilog;
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
@@ -105,10 +106,8 @@ builder.Services.AddScoped<ILabelRepository, LabelRepository>();
 builder.Services.AddScoped<IlabelService, LabelService>();
 builder.Services.AddScoped<ICollaboratorRepository, CollaboratorRepository>();
 builder.Services.AddScoped<ICollaboratorService, CollaboratorService>();
-
-
-
-
+builder.Services.AddScoped<IReminderTaskRepository, ReminderTaskRepository>();
+builder.Services.AddScoped<IReminderService, ReminderService>();
 
 
 builder.Services.AddAutoMapper(typeof(NotesProfile));

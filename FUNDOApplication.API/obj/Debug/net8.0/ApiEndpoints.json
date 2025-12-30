@@ -421,6 +421,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FunDooApplication.Controllers.ReminderController",
+    "Method": "SendReminders",
+    "RelativePath": "api/reminder/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FunDooApplication.Controllers.UserController",
     "Method": "ForgotPassword",
     "RelativePath": "api/User/forgot-password",
