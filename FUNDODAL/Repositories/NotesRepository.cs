@@ -47,7 +47,7 @@ namespace DataAccessLayer.Repositories
             return notes;
         }
 
-        // 🗑️ Move to Trash (SOFT DELETE)
+        //  Move to Trash (SOFT DELETE)
         public void MoveToTrash(int noteId, int userId)
         {
             var note = context.Notes.FirstOrDefault(n =>
@@ -62,7 +62,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        // 📄 Get Trashed Notes
+        //  Get Trashed Notes
         public List<Notes> GetTrashedNotes(int userId)
         {
             return context.Notes
@@ -70,7 +70,7 @@ namespace DataAccessLayer.Repositories
                 .ToList();
         }
 
-        // ♻️ Restore from Trash
+        //  Restore from Trash
         public void RestoreNote(int noteId, int userId)
         {
             var note = context.Notes.FirstOrDefault(n =>
@@ -85,7 +85,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        // ❌ Permanent Delete (ONLY FROM TRASH)
+        //  Permanent Delete (ONLY FROM TRASH)
         public void PermanentDelete(int noteId, int userId)
         {
             var note = context.Notes.FirstOrDefault(n =>
